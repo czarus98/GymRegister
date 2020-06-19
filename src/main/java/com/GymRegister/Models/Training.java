@@ -22,4 +22,32 @@ public class Training {
 
     public Training() {
     }
+
+    public Training(long training_id) {
+        Training_id = training_id;
+    }
+
+    public long getTraining_id() {
+        return Training_id;
+    }
+
+    public void setTraining_id(long training_id) {
+        Training_id = training_id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<ExerciseTraining> getBaskets() {
+        return baskets;
+    }
+
+    public void setBaskets(List<ExerciseTraining> baskets) {
+        this.baskets = baskets;
+    }
 }

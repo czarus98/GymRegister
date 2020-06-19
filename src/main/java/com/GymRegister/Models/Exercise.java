@@ -21,4 +21,33 @@ public class Exercise {
 
     public Exercise() {
     }
+
+    public Exercise(long exercise_id, String name) {
+        Exercise_id = exercise_id;
+        this.name = name;
+    }
+
+    public long getExercise_id() {
+        return Exercise_id;
+    }
+
+    public void setExercise_id(long exercise_id) {
+        Exercise_id = exercise_id;
+    }
+
+    public List<ExerciseTraining> getExerciseTraining() {
+        return ExerciseTraining;
+    }
+
+    public void setExerciseTraining(List<ExerciseTraining> exerciseTraining) {
+        ExerciseTraining = exerciseTraining;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

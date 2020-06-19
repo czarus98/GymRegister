@@ -79,4 +79,12 @@ public class User {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
+    public List<Training> getTrainings() {
+        return trainings;
+    }
+
+    public void setTrainings(List<Training> trainings) {
+        this.trainings = trainings;
+    }
 }
