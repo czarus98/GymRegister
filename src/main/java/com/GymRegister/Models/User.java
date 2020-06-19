@@ -4,7 +4,9 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="USERS", schema = "GYM", catalog="")
@@ -28,6 +30,9 @@ public class User {
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private List <Training> trainings=new ArrayList<Training>();
+
+    @ManyToMany
+    private List <Role> roles;
 
     public User(long user_id, String username, String password, String firstname, String lastname) {
         User_id = user_id;
@@ -80,11 +85,20 @@ public class User {
         this.lastname = lastname;
     }
 
+
     public List<Training> getTrainings() {
         return trainings;
     }
 
     public void setTrainings(List<Training> trainings) {
         this.trainings = trainings;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
