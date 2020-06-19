@@ -11,7 +11,7 @@
 	<groupId>com.GymRegister</groupId>
 	<artifactId>GymRegister</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>GymRegister</name>
 	<description>Gym track app with SpringBoot</description>
 
 	<properties>
