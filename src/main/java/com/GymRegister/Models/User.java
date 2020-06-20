@@ -16,23 +16,26 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long User_id;
 
-    @NotNull
+    @Column(unique = true, nullable = false)
     private String username;
 
-    @NotNull
+    @Column(nullable = false)
     private String password;
 
-    @NotNull
+    @Column(nullable = false)
     private String firstname;
 
-    @NotNull
+    @Column(nullable = false)
     private String lastname;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private List <Training> trainings=new ArrayList<Training>();
 
-    @ManyToMany
-    private List <Role> roles;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    private List <Role> roles = new ArrayList<Role>();
 
     public User(long user_id, String username, String password, String firstname, String lastname) {
         User_id = user_id;

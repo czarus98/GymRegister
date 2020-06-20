@@ -1,6 +1,7 @@
 package com.GymRegister.Models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -10,23 +11,26 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long role_id;
 
     private String name;
 
     @ManyToMany(mappedBy = "roles")
-    private List <User> users;
+    private List <User> users = new ArrayList<>();
 
     public Role(String role_user) {
         this.name=role_user;
     }
 
-    public Long getId() {
-        return id;
+    public Role() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(Long role_id) {
+        this.role_id = role_id;
     }
 
     public String getName() {

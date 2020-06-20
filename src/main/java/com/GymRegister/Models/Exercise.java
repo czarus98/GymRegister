@@ -16,7 +16,7 @@ public class Exercise {
     @OneToMany(mappedBy = "exercise",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private List<ExerciseTraining> ExerciseTraining=new ArrayList<ExerciseTraining>();
 
-    @NotNull
+    @Column(nullable = false)
     private String name;
 
     public Exercise() {

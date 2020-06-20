@@ -11,10 +11,10 @@ public class ExerciseTraining {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ExerciseTraining_id;
 
-    @NotNull
+    @Column(nullable = false)
     private int sets_number;
 
-    @NotNull
+    @Column(nullable = false)
     private int repetitions_number;
 
     @ManyToOne(optional = false,fetch = FetchType.LAZY)

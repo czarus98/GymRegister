@@ -1,15 +1,22 @@
 package com.GymRegister.Dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class UserRegistrationDto {
 
+    @NotEmpty
     private String firstName;
 
+    @NotEmpty
     private String lastName;
 
+    @NotEmpty
     private String password;
 
+    @NotEmpty
     private String confirmPassword;
 
+    @NotEmpty
     private String username;
 
     public String getFirstName() {
