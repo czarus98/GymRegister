@@ -1,7 +1,5 @@
 package com.GymRegister.Models;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +9,7 @@ import java.util.List;
 public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Exercise_id;
+    private Long Exercise_id;
 
     @OneToMany(mappedBy = "exercise",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private List<ExerciseTraining> ExerciseTraining=new ArrayList<ExerciseTraining>();
@@ -22,16 +20,16 @@ public class Exercise {
     public Exercise() {
     }
 
-    public Exercise(long exercise_id, String name) {
+    public Exercise(Long exercise_id, String name) {
         Exercise_id = exercise_id;
         this.name = name;
     }
 
-    public long getExercise_id() {
+    public Long getExercise_id() {
         return Exercise_id;
     }
 
-    public void setExercise_id(long exercise_id) {
+    public void setExercise_id(Long exercise_id) {
         Exercise_id = exercise_id;
     }
 

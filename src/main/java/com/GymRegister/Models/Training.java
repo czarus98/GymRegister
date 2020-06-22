@@ -1,7 +1,5 @@
 package com.GymRegister.Models;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +9,7 @@ import java.util.List;
 public class Training {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Training_id;
+    private Long Training_id;
 
     @ManyToOne(optional = false,fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -23,15 +21,15 @@ public class Training {
     public Training() {
     }
 
-    public Training(long training_id) {
+    public Training(Long training_id) {
         Training_id = training_id;
     }
 
-    public long getTraining_id() {
+    public Long getTraining_id() {
         return Training_id;
     }
 
-    public void setTraining_id(long training_id) {
+    public void setTraining_id(Long training_id) {
         Training_id = training_id;
     }
 

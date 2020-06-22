@@ -1,6 +1,5 @@
 package com.GymRegister.Controllers;
 
-import com.GymRegister.Dto.UserRegistrationDto;
 import com.GymRegister.Models.User;
 import com.GymRegister.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class UserController {
 
@@ -18,8 +19,8 @@ public class UserController {
     private UserService userService;
 
     @ModelAttribute("user")
-    public UserRegistrationDto userRegistrationDto() {
-        return new UserRegistrationDto();
+    public User userRegistrationDto() {
+        return new User();
     }
 
     @GetMapping("/registration")
@@ -28,15 +29,16 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto userDto, BindingResult result)
-    {
+    public String registerUserAccount(@ModelAttribute("user") @Valid User userDto,
+                                      BindingResult result) {
+
         User existing = userService.findByUsername(userDto.getUsername());
         if (existing != null) {
             result.rejectValue("username", null, "There is already an account registered with that username");
         }
 
         if (result.hasErrors()) {
-            return "redirect: /registration";
+            return "registration";
         }
 
         userService.save(userDto);

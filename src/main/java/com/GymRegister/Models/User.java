@@ -1,12 +1,8 @@
 package com.GymRegister.Models;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name="USERS", schema = "GYM", catalog="")
@@ -14,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long User_id;
+    private Long User_id;
 
     @Column(unique = true, nullable = false)
     private String username;
@@ -28,6 +24,9 @@ public class User {
     @Column(nullable = false)
     private String lastname;
 
+    @Transient
+    private String passwordConfirm;
+
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private List <Training> trainings=new ArrayList<Training>();
 
@@ -37,7 +36,7 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private List <Role> roles = new ArrayList<Role>();
 
-    public User(long user_id, String username, String password, String firstname, String lastname) {
+    public User(Long user_id, String username, String password, String firstname, String lastname) {
         User_id = user_id;
         this.username = username;
         this.password = password;
@@ -48,11 +47,11 @@ public class User {
     public User() {
     }
 
-    public long getUser_id() {
+    public Long getUser_id() {
         return User_id;
     }
 
-    public void setUser_id(long user_id) {
+    public void setUser_id(Long user_id) {
         User_id = user_id;
     }
 
@@ -72,6 +71,14 @@ public class User {
         this.password = password;
     }
 
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -87,7 +94,6 @@ public class User {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
 
     public List<Training> getTrainings() {
         return trainings;
