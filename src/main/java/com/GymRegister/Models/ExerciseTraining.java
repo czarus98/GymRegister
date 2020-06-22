@@ -1,7 +1,5 @@
 package com.GymRegister.Models;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -9,12 +7,12 @@ import javax.persistence.*;
 public class ExerciseTraining {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long ExerciseTraining_id;
+    private Long ExerciseTraining_id;
 
-    @NotNull
+    @Column(nullable = false)
     private int sets_number;
 
-    @NotNull
+    @Column(nullable = false)
     private int repetitions_number;
 
     @ManyToOne(optional = false,fetch = FetchType.LAZY)
@@ -25,7 +23,7 @@ public class ExerciseTraining {
     @JoinColumn(name = "training_id")
     private Training training;
 
-    public ExerciseTraining(long exerciseTraining_id, int sets_number, int repetitions_number) {
+    public ExerciseTraining(Long exerciseTraining_id, int sets_number, int repetitions_number) {
         ExerciseTraining_id = exerciseTraining_id;
         this.sets_number = sets_number;
         this.repetitions_number = repetitions_number;
@@ -34,11 +32,11 @@ public class ExerciseTraining {
     public ExerciseTraining() {
     }
 
-    public long getExerciseTraining_id() {
+    public Long getExerciseTraining_id() {
         return ExerciseTraining_id;
     }
 
-    public void setExerciseTraining_id(long exerciseTraining_id) {
+    public void setExerciseTraining_id(Long exerciseTraining_id) {
         ExerciseTraining_id = exerciseTraining_id;
     }
 
